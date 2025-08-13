@@ -1,14 +1,9 @@
 import 'dart:async';
 
-import 'package:authentication_repository/authentication_repository.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/widgets.dart';
-import 'package:leaderboard_repository/leaderboard_repository.dart';
 import 'package:super_dash/app/app.dart';
 import 'package:super_dash/audio/audio.dart';
 import 'package:super_dash/bootstrap.dart';
-import 'package:super_dash/firebase_options_dev.dart';
 import 'package:super_dash/settings/persistence/persistence.dart';
 import 'package:super_dash/settings/settings.dart';
 import 'package:super_dash/share/share.dart';
@@ -16,9 +11,9 @@ import 'package:super_dash/share/share.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
 
   final settings = SettingsController(
     persistence: LocalStorageSettingsPersistence(),
@@ -32,23 +27,23 @@ void main() async {
     gameUrl: 'https://endless-runner-9481713-383737.web.app/',
   );
 
-  final leaderboardRepository = LeaderboardRepository(
-    FirebaseFirestore.instance,
-  );
+  // final leaderboardRepository = LeaderboardRepository(
+  //   FirebaseFirestore.instance,
+  // );
 
   unawaited(
     bootstrap(
-      (firebaseAuth) async {
-        final authenticationRepository = AuthenticationRepository(
-          firebaseAuth: firebaseAuth,
-        );
+      () async {
+        // final authenticationRepository = AuthenticationRepository(
+        //   // firebaseAuth: firebaseAuth,
+        // );
 
         return App(
           audioController: audio,
           settingsController: settings,
           shareController: share,
-          authenticationRepository: authenticationRepository,
-          leaderboardRepository: leaderboardRepository,
+          // authenticationRepository: authenticationRepository,
+          // leaderboardRepository: leaderboardRepository,
         );
       },
     ),

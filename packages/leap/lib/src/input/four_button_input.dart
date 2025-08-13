@@ -218,13 +218,13 @@ class FourButtonKeyboardInput extends Component with KeyboardHandler {
       isPressed && keysDown.intersection(downKeys).isNotEmpty;
 
   @override
-  bool onKeyEvent(KeyEvent keyEvent, Set<LogicalKeyboardKey> keysPressed) {
+  bool onKeyEvent(KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     // Ignore irrelevant keys.
-    if (relevantKeys.contains(keyEvent.physicalKey)) {
-      if (keyEvent is RawKeyDownEvent) {
-        keysDown.add(keyEvent.physicalKey);
-      } else if (keyEvent is RawKeyUpEvent) {
-        keysDown.remove(keyEvent.physicalKey);
+    if (relevantKeys.contains(event.physicalKey)) {
+      if (event is KeyDownEvent) {
+        keysDown.add(event.physicalKey);
+      } else if (event is KeyUpEvent) {
+        keysDown.remove(event.physicalKey);
       }
     }
     return true;

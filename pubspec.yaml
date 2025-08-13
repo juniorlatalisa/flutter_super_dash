@@ -10,15 +10,9 @@ dependencies:
   app_ui:
     path: packages/app_ui
   audioplayers: ^5.2.0
-  authentication_repository:
-    path: packages/authentication_repository
   bloc: ^8.1.2
-  cloud_firestore: ^4.15.6
   equatable: ^2.0.5
   file_selector: ^1.0.1
-  firebase_analytics: ^10.8.7
-  firebase_auth: ^4.17.6
-  firebase_core: ^2.25.5
   flame: ^1.10.0
   flame_behaviors: ^1.0.0
   flame_tiled: ^1.15.0
@@ -30,8 +24,6 @@ dependencies:
     sdk: flutter
   font_awesome_flutter: ^10.6.0
   intl: ^0.20.2
-  leaderboard_repository:
-    path: packages/leaderboard_repository
   leap:
     path: packages/leap
   logging: ^1.2.0

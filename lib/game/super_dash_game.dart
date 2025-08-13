@@ -13,7 +13,6 @@ import 'package:flutter/services.dart';
 import 'package:leap/leap.dart';
 import 'package:super_dash/audio/audio.dart';
 import 'package:super_dash/game/game.dart';
-import 'package:super_dash/score/score.dart';
 
 bool _tsxPackingFilter(Tileset tileset) {
   return !(tileset.source ?? '').startsWith('anim');
@@ -33,18 +32,18 @@ class SuperDashGame extends LeapGame
     this.customBundle,
     this.inMapTester = false,
   }) : super(
-          tileSize: 64,
-          configuration: const LeapConfiguration(
-            tiled: TiledOptions(
-              atlasMaxX: 4048,
-              atlasMaxY: 4048,
-              tsxPackingFilter: _tsxPackingFilter,
-              layerPaintFactory: _layerPaintFactory,
-              atlasPackingSpacingX: 4,
-              atlasPackingSpacingY: 4,
-            ),
-          ),
-        );
+         tileSize: 64,
+         configuration: const LeapConfiguration(
+           tiled: TiledOptions(
+             atlasMaxX: 4048,
+             atlasMaxY: 4048,
+             tsxPackingFilter: _tsxPackingFilter,
+             layerPaintFactory: _layerPaintFactory,
+             atlasPackingSpacingX: 4,
+             atlasPackingSpacingY: 4,
+           ),
+         ),
+       );
 
   static final _cameraViewport = Vector2(592, 1024);
   static const prefix = 'assets/map/';
@@ -242,27 +241,27 @@ class SuperDashGame extends LeapGame
       },
     );
 
-    if (buildContext != null) {
-      final score = gameBloc.state.score;
-      Navigator.of(buildContext!).push(
-        ScorePage.route(score: score),
-      );
-    }
+    // if (buildContext != null) {
+    //   final score = gameBloc.state.score;
+    //   Navigator.of(buildContext!).push(
+    //     ScorePage.route(score: score),
+    //   );
+    // }
   }
 
   void _resetEntities() {
     children.whereType<ObjectGroupProximityBuilder<Player>>().forEach(
-          (spawner) => spawner.removeFromParent(),
-        );
+      (spawner) => spawner.removeFromParent(),
+    );
     world.firstChild<TreeHouseFront>()?.removeFromParent();
     world.firstChild<TreeSign>()?.removeFromParent();
 
-    leapMap.children
-        .whereType<Enemy>()
-        .forEach((enemy) => enemy.removeFromParent());
-    leapMap.children
-        .whereType<Item>()
-        .forEach((enemy) => enemy.removeFromParent());
+    leapMap.children.whereType<Enemy>().forEach(
+      (enemy) => enemy.removeFromParent(),
+    );
+    leapMap.children.whereType<Item>().forEach(
+      (enemy) => enemy.removeFromParent(),
+    );
   }
 
   Future<void> _addSpawners() async {
@@ -357,8 +356,8 @@ class SuperDashGame extends LeapGame
       cameraDebugger.add(anchor);
       camera.follow(anchor);
 
-      final proximityBuilders =
-          descendants().whereType<ObjectGroupProximityBuilder<Player>>();
+      final proximityBuilders = descendants()
+          .whereType<ObjectGroupProximityBuilder<Player>>();
       for (final proximityBuilder in proximityBuilders) {
         proximityBuilder.currentReference = cameraDebugger;
       }

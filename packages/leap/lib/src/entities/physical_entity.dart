@@ -58,11 +58,8 @@ abstract class PhysicalEntity<TGame extends LeapGame> extends PositionedEntity
     super.position,
     super.size,
   }) : super(
-          behaviors: _physicalBehaviors(
-            static: static,
-            extra: behaviors,
-          ),
-        );
+         behaviors: _physicalBehaviors(static: static, extra: behaviors),
+       );
 
   /// Draws a rect over the hitbox when this is true.
   bool debugHitbox = false;
@@ -288,7 +285,7 @@ Iterable<Behavior>? _physicalBehaviors({
 /// Component added as a child to ensure it is drawn on top of the
 /// entity's standard rendering.
 class _DebugHitboxComponent extends PositionComponent {
-  final _paint = Paint()..color = Colors.green.withOpacity(0.6);
+  final _paint = Paint()..color = Colors.green.withValues(alpha: 0.6);
 
   @override
   int get priority => 9998;
@@ -303,7 +300,7 @@ class _DebugHitboxComponent extends PositionComponent {
 /// entity's standard rendering.
 class _DebugCollisionsComponent extends PositionComponent
     with HasAncestor<PhysicalEntity> {
-  final _paint = Paint()..color = Colors.red.withOpacity(0.6);
+  final _paint = Paint()..color = Colors.red.withValues(alpha: 0.6);
 
   @override
   int get priority => 9999;

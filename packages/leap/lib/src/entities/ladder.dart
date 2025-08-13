@@ -18,14 +18,11 @@ abstract class Ladder<T extends LeapGame> extends PhysicalEntity<T> {
     required TiledObject tiledObject,
     double topExtraHitbox = 0,
   }) : this(
-          position: Vector2(tiledObject.x, tiledObject.y),
-          size: Vector2(
-            tiledObject.width,
-            tiledObject.height,
-          ),
-          topExtraHitbox: topExtraHitbox,
-          tiledObject: tiledObject,
-        );
+         position: Vector2(tiledObject.x, tiledObject.y),
+         size: Vector2(tiledObject.width, tiledObject.height),
+         topExtraHitbox: topExtraHitbox,
+         tiledObject: tiledObject,
+       );
 
   // Extra hitbox is to make it easier for the ladder hitbox to
   // collide with player walking over the ladder when on the ground
@@ -40,11 +37,7 @@ abstract class Ladder<T extends LeapGame> extends PhysicalEntity<T> {
 }
 
 /// The possible ladder movement states.
-enum LadderMovement {
-  up,
-  down,
-  stopped,
-}
+enum LadderMovement { up, down, stopped }
 
 /// Status indicating the [PhysicalEntity] this is added to is
 /// on a ladder.
@@ -102,7 +95,7 @@ class OnLadderStatus<T extends LeapGame> extends StatusComponent
         case LadderMovement.stopped:
           parentEntity.velocity.y = 0;
           break;
-        default:
+        // default:
       }
     }
   }

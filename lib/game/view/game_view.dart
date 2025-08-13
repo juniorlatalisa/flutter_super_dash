@@ -10,7 +10,7 @@ class Game extends StatelessWidget {
 
   static PageRoute<void> route() {
     return PageRouteBuilder(
-      pageBuilder: (_, __, ___) => const Game(),
+      pageBuilder: (_, _, _) => const Game(),
     );
   }
 
