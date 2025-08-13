@@ -36,14 +36,14 @@ class Enemy extends PhysicalEntity<SuperDashGame> {
   Enemy({
     required this.tiledObject,
     this.enemyDamage = 1,
-  })  : type = EnemyType.fromValue(
-          (tiledObject.properties.byName['Type'] as StringProperty?)?.value ??
-              '',
-        ),
-        super(
-          collisionType: CollisionType.standard,
-          static: tiledObject.properties.byName['Fly']?.value as bool? ?? false,
-        );
+  }) : type = EnemyType.fromValue(
+         (tiledObject.properties.byName['Type'] as StringProperty?)?.value ??
+             '',
+       ),
+       super(
+         // collisionType: CollisionType.standard,
+         static: tiledObject.properties.byName['Fly']?.value as bool? ?? false,
+       );
 
   final int enemyDamage;
   late final EnemyType type;

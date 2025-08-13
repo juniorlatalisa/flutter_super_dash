@@ -46,8 +46,9 @@ class Player extends JumperCharacter<SuperDashGame> {
     final jumpSound = hasGoldenFeather ? Sfx.phoenixJump : Sfx.jump;
     gameRef.audioController.playSfx(jumpSound);
 
-    final newJumpState =
-        hasGoldenFeather ? DashState.phoenixJump : DashState.jump;
+    final newJumpState = hasGoldenFeather
+        ? DashState.phoenixJump
+        : DashState.jump;
     stateBehavior.state = newJumpState;
   }
 
@@ -71,8 +72,9 @@ class Player extends JumperCharacter<SuperDashGame> {
     final behavior = stateBehavior;
     if (behavior.state != DashState.running &&
         behavior.state != DashState.phoenixRunning) {
-      final newRunState =
-          hasGoldenFeather ? DashState.phoenixRunning : DashState.running;
+      final newRunState = hasGoldenFeather
+          ? DashState.phoenixRunning
+          : DashState.running;
       if (behavior.state != newRunState) {
         behavior.state = newRunState;
       }
@@ -80,8 +82,9 @@ class Player extends JumperCharacter<SuperDashGame> {
   }
 
   void setIdleState() {
-    stateBehavior.state =
-        hasGoldenFeather ? DashState.phoenixIdle : DashState.idle;
+    stateBehavior.state = hasGoldenFeather
+        ? DashState.phoenixIdle
+        : DashState.idle;
   }
 
   @override
@@ -176,7 +179,7 @@ class Player extends JumperCharacter<SuperDashGame> {
       return respawn();
     }
 
-    final collisions = collisionInfo.otherCollisions ?? const [];
+    final collisions = /*collisionInfo.otherCollisions ??*/ const [];
 
     if (collisions.isEmpty) return;
 
